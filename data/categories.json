@@ -1,0 +1,178 @@
+[
+    {
+        "model": "project.category",
+        "pk": 1,
+        "fields": {
+            "name": "Elektronika",
+            "image": "product-images/cat-1.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 2,
+        "fields": {
+            "name": "Kitoblar",
+            "image": "product-images/product-2.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 3,
+        "fields": {
+            "name": "Moda",
+            "image": "product-images/product-1.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 4,
+        "fields": {
+            "name": "Uy va Oshxona",
+            "image": "product-images/cat-4.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 5,
+        "fields": {
+            "name": "O‘yinchoqlar",
+            "image": "product-images/product-5.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 6,
+        "fields": {
+            "name": "Sport",
+            "image": "product-images/product-6.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 7,
+        "fields": {
+            "name": "Sog'lik va Go'zallik",
+            "image": "product-images/product-9.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 8,
+        "fields": {
+            "name": "Avtomobil ehtiyot qismlari",
+            "image": "product-images/product-4.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 9,
+        "fields": {
+            "name": "Bog‘ va Tashqi jihozlar",
+            "image": "product-images/product-3.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 10,
+        "fields": {
+            "name": "Uy hayvonlari",
+            "image": "product-images/product-6.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 11,
+        "fields": {
+            "name": "Uy-ro‘zg‘or buyumlari",
+            "image": "product-images/product-1.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 12,
+        "fields": {
+            "name": "Ofis anjomlari",
+            "image": "product-images/product-2.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 13,
+        "fields": {
+            "name": "Go'zallik vositalari",
+            "image": "product-images/product-3.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 14,
+        "fields": {
+            "name": "Musiqa asboblari",
+            "image": "product-images/product-4.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 15,
+        "fields": {
+            "name": "Badiiy asarlar",
+            "image": "product-images/product-5.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 16,
+        "fields": {
+            "name": "Kompyuter texnikasi",
+            "image": "product-images/cat-3.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 17,
+        "fields": {
+            "name": "Uy jihozlari",
+            "image": "product-images/product-1.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 18,
+        "fields": {
+            "name": "Oziq-ovqat mahsulotlari",
+            "image": "product-images/cat-4.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 19,
+        "fields": {
+            "name": "Ofis va o‘quv materiallari",
+            "image": "product-images/product-2.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 20,
+        "fields": {
+            "name": "Mebel",
+            "image": "product-images/product-6.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 21,
+        "fields": {
+            "name": "Uy uchun jihozlar",
+            "image": "product-images/product-3.jpg"
+        }
+    },
+    {
+        "model": "project.category",
+        "pk": 22,
+        "fields": {
+            "name": "Bolalar kiyimlari",
+            "image": "product-images/cat-1.jpg"
+        }
+    }
+]

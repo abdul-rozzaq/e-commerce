@@ -3,8 +3,9 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container py-5" style="min-height: 50vh;">
     <h2>Kirish</h2>
+
     <form method="POST" class="w-50 mb-3">
         {% csrf_token %}
 
@@ -18,16 +19,22 @@
             <input class="form-control" type="password" name="password" id="id_password" placeholder="• • • • • •">
         </p>
 
+        <p>
+            <a href="{% url 'password_reset' %}" class="text-dark">Parolni unutdingizmi?</a>
+        </p>
+
         <button type="submit" class="btn btn-primary w-100">Kirish</button>
     </form>
 
     <ul>
         {% for error in errors %}
-            <li> {{ error }} </li>
+        <li> {{ error }} </li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'register' %}" style="text-decoration: underline;" class="text-dark">Ro'yhatdan o'tish</a>
+    <p>
+        Hissobingiz yo'qmi? <a href="{% url 'register' %}" style="text-decoration: underline;" class="text-dark">Ro'yhatdan o'tish</a>
+    </p>
 
 </div>
 

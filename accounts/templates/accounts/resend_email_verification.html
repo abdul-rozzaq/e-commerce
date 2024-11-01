@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container pt-5" style="min-height: 50vh;">
+
+    <h2>Email tasdiqlanmagan</h2>
+    <p class="mb-3">Iltimos, email manzilingizni tasdiqlang</p>
+
+    <form method="POST" class="w-50">{% csrf_token %}
+
+        <p>
+            <label for="email">Email</label>
+            <input type="email" class="form-control" value="{{ request.session.temp_email }}" name="email">
+        </p>
+
+        <button type="submit" class="btn btn-primary">Yuborish</button>
+
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock content %}

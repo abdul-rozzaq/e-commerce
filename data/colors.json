@@ -1,0 +1,72 @@
+[
+    {
+        "model": "project.productcolor",
+        "pk": 1,
+        "fields": {
+            "name": "Qora"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 2,
+        "fields": {
+            "name": "Oq"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 3,
+        "fields": {
+            "name": "Qizil"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 4,
+        "fields": {
+            "name": "Yashil"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 5,
+        "fields": {
+            "name": "Ko'k"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 6,
+        "fields": {
+            "name": "Sariq"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 7,
+        "fields": {
+            "name": "Kulrang"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 8,
+        "fields": {
+            "name": "To'q ko'k"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 9,
+        "fields": {
+            "name": "Binafsha"
+        }
+    },
+    {
+        "model": "project.productcolor",
+        "pk": 10,
+        "fields": {
+            "name": "Jigarrang"
+        }
+    }
+]

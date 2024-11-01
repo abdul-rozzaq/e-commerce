@@ -13,6 +13,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
+    # "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     # Email verification
     "verify_email.apps.VerifyEmailConfig",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -80,7 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "uz"
 
 TIME_ZONE = "UTC"
 
@@ -117,5 +119,11 @@ DEFAULT_FROM_EMAIL = "rayyan.dev@mail.ru"
 
 # TEMPLATES
 
-NEW_EMAIL_SENT_TEMPLATE = "email/new_email_sent.html"
 VERIFICATION_SUCCESS_TEMPLATE = "verifications/email_verification_successful.html"
+HTML_MESSAGE_TEMPLATE = "emails/email_verification_msg.html"
+
+
+# EMAIL SETTINGS
+
+SUBJECT = "Email tasdiqlash habari"
+EXPIRE_AFTER = "1h"

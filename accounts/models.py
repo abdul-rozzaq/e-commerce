@@ -37,3 +37,14 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    @classmethod
+    def get_user(cls, email, password):
+        try:
+            user = cls.objects.get(email=email)
+
+            if user.check_password(password):
+                return user
+
+        except cls.DoesNotExist:
+            return None
