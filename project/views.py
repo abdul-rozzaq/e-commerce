@@ -1,13 +1,13 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import generic
 
 from django.db.models import Q
 from django.core.handlers.wsgi import WSGIRequest
 
-from project.forms import ReviewForm
+from project.forms import CartItemForm, ReviewForm
 
-from .models import Category, Product, ProductColor, ProductSize, Review
+from .models import CartItem, Category, Product, ProductColor, ProductSize, Review
 
 
 class HomePageView(generic.ListView):
@@ -94,14 +94,34 @@ class DetailPage(generic.DetailView):
         return super().get(request, *args, **kwargs)
 
 
-def cart_page(request):
-    context = {}
-    return render(request, "cart.html", context)
+class CheckOutView(generic.View):
+    def post(self, request: WSGIRequest, product_id, *args, **kwargs):
+
+        form = CartItemForm(request.POST)
+
+        if form.is_valid():
+            cart_item: CartItem = form.save(commit=False)
+
+            cart_item.product_id = product_id
+            cart_item.user = request.user
+
+            cart_item.save()
+            
+            return redirect('')
+        
+        print(form.errors)
+
+        return redirect("detail_page", pk=product_id)
 
 
 def checkout_page(request):
     context = {}
     return render(request, "checkout.html", context)
+
+
+def cart_page(request):
+    context = {}
+    return render(request, "cart.html", context)
 
 
 def contact_page(request):

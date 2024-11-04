@@ -89,3 +89,18 @@ class Review(models.Model):
 
     def get_range(self):
         return [1, 2, 3, 4, 5]
+
+
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    count = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+        ]
+    )
+    color = models.ForeignKey(ProductColor, on_delete=models.PROTECT, null=True, blank=True)
+    size = models.ForeignKey(ProductSize, on_delete=models.PROTECT, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.product.name
