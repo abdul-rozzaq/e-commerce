@@ -1,6 +1,6 @@
-from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 
 User = get_user_model()
 
@@ -52,12 +52,17 @@ class Product(models.Model):
 
     discount = models.DecimalField(max_digits=10, decimal_places=2)
 
+    class Meta:
+        ordering = ("-pk",)
+
     def __str__(self) -> str:
         return self.name
 
     def priceWithDiscount(self):
         return self.price - self.discount
 
+    def get_image(self):
+        return self.images.all().first().image
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
@@ -104,3 +109,6 @@ class CartItem(models.Model):
 
     def __str__(self) -> str:
         return self.product.name
+
+    def total(self):
+        return self.count * self.product.price

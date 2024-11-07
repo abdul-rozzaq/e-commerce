@@ -1,7 +1,19 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Category, ProductColor, Product, AdditionalInfo, ProductImage, ProductSize, Review
+from .models import AdditionalInfo, CartItem, Category, Product, ProductColor, ProductImage, ProductSize, Review
+
+
+@admin.register(CartItem)
+class CartItemAdmin(admin.ModelAdmin):
+    list_display = ["pk", "product", "user", "count", "view_image"]
+
+    def view_image(self, obj: CartItem):
+        images = obj.product.images.all()
+
+        if images:
+            return format_html('<img src="{}" width="100" height="100" />', images.first().image.url)
+        return "Rasm yo'q"
 
 
 class ProductImageInline(admin.TabularInline):

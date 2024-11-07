@@ -1,13 +1,16 @@
 from typing import Any
-from django.shortcuts import redirect, render
-from django.views import generic
 
-from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.handlers.wsgi import WSGIRequest
+from django.db.models import F, Q, Sum
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import generic
 
 from project.forms import CartItemForm, ReviewForm
 
-from .models import CartItem, Category, Product, ProductColor, ProductSize, Review
+from .models import (CartItem, Category, Product, ProductColor, ProductSize,
+                     Review)
 
 
 class HomePageView(generic.ListView):
@@ -94,7 +97,7 @@ class DetailPage(generic.DetailView):
         return super().get(request, *args, **kwargs)
 
 
-class CheckOutView(generic.View):
+class CheckOutView(LoginRequiredMixin, generic.View):
     def post(self, request: WSGIRequest, product_id, *args, **kwargs):
 
         form = CartItemForm(request.POST)
@@ -106,22 +109,37 @@ class CheckOutView(generic.View):
             cart_item.user = request.user
 
             cart_item.save()
-            
-            return redirect('')
-        
+
+            return redirect("cart_page")
+
         print(form.errors)
 
         return redirect("detail_page", pk=product_id)
+
+    def get_redirect_field_name(self) -> str:
+        return "home_page"
+
+
+class ShoppingCartView(LoginRequiredMixin, generic.TemplateView):
+    template_name = "cart.html"
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+
+        items = CartItem.objects.filter(user=self.request.user)
+        shipping = 10
+
+        context["cart_items"] = items
+        context["shipping"] = shipping
+        context["total_price"] = float(items.aggregate(total=Sum(F("count") * F("product__price")))["total"])
+        context["total_price_with_shipping"] = context['shipping'] + context['total_price']
+
+        return context
 
 
 def checkout_page(request):
     context = {}
     return render(request, "checkout.html", context)
-
-
-def cart_page(request):
-    context = {}
-    return render(request, "cart.html", context)
 
 
 def contact_page(request):
@@ -132,3 +150,14 @@ def contact_page(request):
 def detail_page(request):
     context = {}
     return render(request, "detail.html", context)
+
+
+@login_required(login_url="login")
+def delete_cart_item(request: WSGIRequest, pk: int):
+
+    item = get_object_or_404(CartItem, pk=pk)
+
+    if item.user == request.user:
+        item.delete()
+
+    return redirect("cart_page")

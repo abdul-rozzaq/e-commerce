@@ -192,6 +192,10 @@
     selectAll("#size-all", '.size-checkbox')
 
 
+    const url = new URL(window.location);
+    let fruits = document.querySelector('#fruits')
+    fruits.value = url.searchParams.get('sorted-by')
+
 
 
 </script>
